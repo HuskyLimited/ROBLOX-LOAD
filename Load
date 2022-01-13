@@ -1,0 +1,128 @@
+-- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
+
+local HubMain = Instance.new("ScreenGui")
+local LoadingScreen = Instance.new("Frame")
+local IconButton = Instance.new("TextButton")
+local UICorner = Instance.new("UICorner")
+
+--Properties:
+
+HubMain.Name = "HubMain"
+HubMain.Parent = game.CoreGui
+HubMain.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+LoadingScreen.Name = "LoadingScreen"
+LoadingScreen.Parent = HubMain
+LoadingScreen.Active = true
+LoadingScreen.AnchorPoint = Vector2.new(0.5, 0.5)
+LoadingScreen.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+LoadingScreen.BackgroundTransparency = 1.000
+LoadingScreen.BorderColor3 = Color3.fromRGB(3, 4, 6)
+LoadingScreen.BorderSizePixel = 0
+LoadingScreen.Position = UDim2.new(0.49987781, 0, 0.500330567, 0)
+LoadingScreen.Size = UDim2.new(0, 100, 0, 100)
+
+IconButton.Name = "IconButton"
+IconButton.Parent = LoadingScreen
+IconButton.AnchorPoint = Vector2.new(0.5, 0.5)
+IconButton.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+IconButton.BorderColor3 = Color3.fromRGB(27, 42, 53)
+IconButton.Position = UDim2.new(0.5, 0, 0.5, 0)
+IconButton.Size = UDim2.new(0, 100, 0, 100)
+IconButton.Font = Enum.Font.SourceSansSemibold
+IconButton.Text = "H"
+IconButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+IconButton.TextSize = 94.000
+
+UICorner.Parent = IconButton
+
+-- Scripts:
+
+local function TODRYX_fake_script() -- HubMain.MainScript 
+	local script = Instance.new('Script', HubMain)
+
+	local blur = Instance.new("BlurEffect", game.Lighting)
+	
+	script.Parent.LoadingScreen.IconButton.MouseButton1Click:Connect(function()
+		wait(1.45)
+		script.Parent.LoadingScreen.Visible = false
+		game.Lighting.Blur:Destroy()
+	end)
+	
+	script.Parent.LoadingScreen.IconButton.MouseButton1Click:Connect(function()
+		wait(.5)
+		script.Parent.LoadingScreen.IconButton.TextTransparency = 1
+		while true do
+			wait(.08)
+			script.Parent.LoadingScreen.IconButton.BackgroundTransparency = script.Parent.LoadingScreen.IconButton.BackgroundTransparency + 0.10
+			if script.Parent.LoadingScreen.IconButton.BackgroundTransparency == 1 then
+				break
+			end
+		end
+	end)
+	
+	wait(.1)
+	
+	
+end
+coroutine.wrap(TODRYX_fake_script)()
+local function ELYHZ_fake_script() -- IconButton.LocalScript 
+	local script = Instance.new('LocalScript', IconButton)
+
+	local text = script.Parent
+	local add = 10
+	wait(0)
+	local k = 1
+	while k <= 255 do
+		text.TextColor3 = Color3.new(k/255,0/255,0/255)
+		k = k + add
+		wait()
+	end
+	while true do
+		k = 1
+		while k <= 255 do
+			text.TextColor3 = Color3.new(255/255,k/255,0/255)
+			k = k + add
+			wait()
+		end
+		k = 1
+		while k <= 255 do
+			text.TextColor3 = Color3.new(255/255 - k/255,255/255,0/255)
+			k = k + add
+			wait()
+		end
+		k = 1
+		while k <= 255 do
+			text.TextColor3 = Color3.new(0/255,255/255,k/255)
+			k = k + add
+			wait()
+		end
+		k = 1
+		while k <= 255 do
+			text.TextColor3 = Color3.new(0/255,255/255 - k/255,255/255)
+			k = k + add
+			wait()
+		end
+		k = 1
+		while k <= 255 do
+			text.TextColor3 = Color3.new(k/255,0/255,255/255)
+			k = k + add
+			wait()
+		end
+		k = 1
+		while k <= 255 do
+			text.TextColor3 = Color3.new(255/255,0/255,255/255 - k/255)
+			k = k + add
+			wait()
+		end
+		while k <= 255 do
+			text.TextColor3 = Color3.new(255/255 - k/255,0/255,0/255)
+			k = k + add
+			wait()
+		end
+	end
+end
+coroutine.wrap(ELYHZ_fake_script)()
